@@ -138,15 +138,22 @@ function askWhichObject() {
 
                 // console.log(answers);
                 if (answers.ammount <= res[realNumber].stock_quantity) {
-                    console.log(" Here is your purchase: ")
-                    console.log(answers.ammount + " " + res[realNumber].product_name)
+                    console.log(" Here is your purchase: ");
+                    console.log(answers.ammount + " " + res[realNumber].product_name);
+                    console.log(res[realNumber].stock_quantity);
+                    var itemId = res[realNumber].item_id;
+                    var stockQuant = res[realNumber].stock_quantity - answers.ammount;
+                    connection.query("UPDATE products SET stock_quantity = ? WHERE item_id = ?", [
+                        stockQuant,
+                        itemId
+                    ])
                 }
                 console.log(" ");
                 console.log(" ");
+                console.log(res[realNumber].stock_quantity);
                 selectChoice()
             }
             )
 
         });
 };
-

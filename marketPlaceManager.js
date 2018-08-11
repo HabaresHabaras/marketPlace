@@ -1,11 +1,4 @@
-// TO DO:
 
-// UPDATE DATABASE stock_quantity of product selected AFTER MAKING A PURHCASE ON askWhichObject()
-// DROP DATABASE AS IT EXISTS AND REDO IT FIXING shields (repeated objects on that department)
-// REMAKE DATABASE/TABLE/INSERT DATA INTO TABLE SO shields DOESN'T HAVE REPEATS
-// CHECK SPELLING AND FUNCTIONALITY
-// MAKE A readme FILE
-// TAKE A LOOK AT MOM'S WEBSITE
 
 
 var mysql = require("mysql");
@@ -157,7 +150,7 @@ function showInventory() {
         console.log(" ");
         for (var i = 0; i < res.length; i++) {
             console.log(" " + res[i].item_id + "   " + res[i].product_name + " | "
-                +  "IN STOCK: " + res[i].stock_quantity
+                + "IN STOCK: " + res[i].stock_quantity
             );
             console.log("------------------------------------------------------------");
         }
@@ -182,18 +175,20 @@ function addInventory() {
     ])
 
         .then(answers => {
-            var productId = answers.id;
-                    var restockAmmount = answers.restock;
+            connection.query("SELECT * FROM products", function (err, res) {
+                var realNumber = parseInt(answers.id) - 1;
+                var productId = answers.id;
+                var restockAmmount = parseInt(answers.restock) + parseInt(res[realNumber].stock_quantity);
 
-            connection.query("UPDATE products SET stock_quantity = ? WHERE item_id = ?", [
-                restockAmmount,
-                productId           
-             ], function(err, res){
-            console.log("That product was restocked!!")
+                connection.query("UPDATE products SET stock_quantity = ? WHERE item_id = ?", [
+                    restockAmmount,
+                    productId
+                ]
+                )
+            })
+            selectChoice()
         });
-        }
-        )
-};
+}
 // .then(answers => {
 //             // console.log(answer.id);
 //             var realNumber = parseInt(answers.id) - 1;
