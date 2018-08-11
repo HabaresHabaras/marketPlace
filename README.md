@@ -2,9 +2,16 @@
 
 This node app is capable of getting data from a database, and changing it, using user input.
 
+INITIAL COMMANDS:
+----------------------------
+npm i
+node marketPlaceCustomer.js
+----------------------------
 
 #################
+
 CUSTOMER VIEW
+
 #################
 
 
