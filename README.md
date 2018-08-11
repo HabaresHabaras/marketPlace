@@ -9,11 +9,9 @@ This node app is capable of getting data from a database, and changing it, using
 
 ###########################
 
-initial commands
-----------------------------
-npm i
-node marketPlaceCustomer.js
-----------------------------
+Initial commands:
+   npm i
+   node marketPlace.js
 
 #################
 
