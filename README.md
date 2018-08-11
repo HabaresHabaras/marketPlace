@@ -1,8 +1,15 @@
-# marketPlace
+#########################
+
+marketPlace
+
+#########################
 
 This node app is capable of getting data from a database, and changing it, using user input.
 
-INITIAL COMMANDS:
+
+###########################
+
+initial commands
 ----------------------------
 npm i
 node marketPlaceCustomer.js
