@@ -120,7 +120,9 @@ function postProduct() {
             },
             function (err) {
                 if (err) throw err;
-                console.log("Your auction was successfully created!");
+                else if(!err){
+                    console.log("Success in adding this product to the inventory!")
+                }
             }
 
         );
